@@ -2,6 +2,8 @@ import express, {Request,Response,Application, NextFunction} from "express";
 import morgan from "morgan";
 import StatusCode from "http-status-codes";
 import logger from "./configs/Logger";
+import { UserRouter } from "./routes/user.route";
+import passport from "./configs/passport.config";
 
 const app : Application = express();
 
@@ -26,5 +28,16 @@ app.get("/",(req: Request,res: Response) : void => {
         message: "Server api alive"
     })
 });
+
+// test route to check auth
+app.get("/private",passport.authenticate('jwt',{session: false}),(req: Request,res: Response) => {
+    res.status(StatusCode.OK).json({
+        success: true,
+        message: "Auth is good",
+        user: req.user
+    });
+})
+
+app.use("/",UserRouter);
 
 export default app;

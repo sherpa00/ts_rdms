@@ -5,18 +5,18 @@ import logger from "./configs/Logger";
 
 dotenv.config();
 
-const PORT : string | undefined = process.env.PORT;
+const PORT: string | undefined = process.env.PORT;
 
 // server starts here
 (async () => {
-    try {
-        app.listen(PORT,() => {
-            logger.info("Server started at port " + PORT);
-            // connect to db pool
-            connectToDb();
-        })
-    } catch (err) {
-        logger.error(err);
-        logger.info("Error while starting server");
-    }
+  try {
+    app.listen(PORT, () => {
+      logger.info("Server started at port " + PORT);
+      // connect to db pool
+      connectToDb();
+    });
+  } catch (err) {
+    logger.error(err);
+    logger.info("Error while starting server");
+  }
 })();

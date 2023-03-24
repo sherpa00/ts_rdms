@@ -1,10 +1,10 @@
-import express, { IRouter} from "express";
+import express, { IRouter } from "express";
 import * as UserController from "../controllers/user.controller";
 
 const router: IRouter = express.Router();
 
-router.post("/register",UserController.registerUser);
+router.post("/register", UserController.registerUser);
 
-router.post("/login",UserController.loginUser);
+router.post("/login", UserController.loginUser);
 
-export {router as UserRouter};
+export { router as UserRouter };

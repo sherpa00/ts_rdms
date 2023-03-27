@@ -68,7 +68,7 @@ export const ModifyNote = async (tempNote: ItempNote) => {
     try {
         // first get the note from db
         const foundNote = await db.query('SELECT * FROM notes WHERE noteid = $1;',[tempNote.noteid]);
-
+        
         // err if note not found
         if (foundNote.rowCount <= 0) {
             return {
